@@ -51,6 +51,7 @@ dependencies {
     runtimeOnly(projects.hyperverseNms1215)
     runtimeOnly(projects.hyperverseNms1216)
     runtimeOnly(projects.hyperverseNms1217)
+    runtimeOnly(projects.hyperverseNms1218)
     runtimeOnly(projects.hyperverseNms12110)
 }
 
@@ -114,6 +115,7 @@ tasks {
             exclude(project(":hyperverse-nms-1-21-5"))
             exclude(project(":hyperverse-nms-1-21-6"))
             exclude(project(":hyperverse-nms-1-21-7"))
+            exclude(project(":hyperverse-nms-1-21-8"))
             exclude(project(":hyperverse-nms-1-21-10"))
         }
         mergeServiceFiles()
