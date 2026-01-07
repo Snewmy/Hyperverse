@@ -53,6 +53,7 @@ dependencies {
     runtimeOnly(projects.hyperverseNms1217)
     runtimeOnly(projects.hyperverseNms1218)
     runtimeOnly(projects.hyperverseNms12110)
+    runtimeOnly(projects.hyperverseNms12111)
 }
 
 bukkit {
@@ -117,6 +118,7 @@ tasks {
             exclude(project(":hyperverse-nms-1-21-7"))
             exclude(project(":hyperverse-nms-1-21-8"))
             exclude(project(":hyperverse-nms-1-21-10"))
+            exclude(project(":hyperverse-nms-1-21-11"))
         }
         mergeServiceFiles()
 
@@ -154,6 +156,6 @@ tasks {
 
     runServer {
         java.toolchain.languageVersion.set(JavaLanguageVersion.of(21))
-        minecraftVersion("1.21.10")
+        minecraftVersion("1.21.11")
     }
 }
