@@ -44,16 +44,8 @@ dependencies {
     implementation("net.kyori:adventure-text-minimessage:4.14.0")
 
     implementation(projects.hyperverseNmsUnsupported)
-    runtimeOnly(projects.hyperverseNms1206)
-    runtimeOnly(projects.hyperverseNms121)
-    runtimeOnly(projects.hyperverseNms1213)
-    runtimeOnly(projects.hyperverseNms1214)
-    runtimeOnly(projects.hyperverseNms1215)
-    runtimeOnly(projects.hyperverseNms1216)
-    runtimeOnly(projects.hyperverseNms1217)
-    runtimeOnly(projects.hyperverseNms1218)
-    runtimeOnly(projects.hyperverseNms12110)
-    runtimeOnly(projects.hyperverseNms12111)
+    runtimeOnly(projects.hyperverseNms261)
+    runtimeOnly(projects.hyperverseNms262)
 }
 
 bukkit {
@@ -98,7 +90,9 @@ bukkit {
         }
     }
 }
-
+java {
+    disableAutoTargetJvm()
+}
 tasks {
     processResources {
         filesMatching("plugin.yml") {
@@ -109,16 +103,8 @@ tasks {
     shadowJar {
         minimize {
             exclude(project(":hyperverse-nms-unsupported"))
-            exclude(project(":hyperverse-nms-1-20-6"))
-            exclude(project(":hyperverse-nms-1-21"))
-            exclude(project(":hyperverse-nms-1-21-3"))
-            exclude(project(":hyperverse-nms-1-21-4"))
-            exclude(project(":hyperverse-nms-1-21-5"))
-            exclude(project(":hyperverse-nms-1-21-6"))
-            exclude(project(":hyperverse-nms-1-21-7"))
-            exclude(project(":hyperverse-nms-1-21-8"))
-            exclude(project(":hyperverse-nms-1-21-10"))
-            exclude(project(":hyperverse-nms-1-21-11"))
+            exclude(project(":hyperverse-nms-26-1"))
+            exclude(project(":hyperverse-nms-26-2"))
         }
         mergeServiceFiles()
 
@@ -155,7 +141,7 @@ tasks {
     }
 
     runServer {
-        java.toolchain.languageVersion.set(JavaLanguageVersion.of(21))
-        minecraftVersion("1.21.11")
+        java.toolchain.languageVersion.set(JavaLanguageVersion.of(25))
+        minecraftVersion("26.2")
     }
 }

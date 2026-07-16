@@ -32,21 +32,26 @@ public record Version(@NotNull String original, @NotNull VersionData versionData
     public static final Pattern SEMVER_PATTERN = Pattern.compile(
             "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$");
 
-    public static @NotNull Version parseMinecraft(@NotNull final String version) throws IllegalArgumentException {
-        String[] split = version.split("\\.");
-        if (split.length < 2) {
+    public static @NotNull Version parseMinecraft(@NotNull final String version)
+            throws IllegalArgumentException {
+
+        // Extract only x.y or x.y.z from beginning
+        Matcher matcher = Pattern.compile("^(\\d+)\\.(\\d+)(?:\\.(\\d+))?")
+                .matcher(version);
+
+        if (!matcher.find()) {
             throw new IllegalArgumentException("Invalid minecraft version: " + version);
         }
-        if (split.length == 2) {
-            StringJoiner joiner = new StringJoiner(".");
-            // insert a .0 to make it correctly formatted
-            joiner.add(split[0]);
-            joiner.add("0");
-            joiner.add(split[1]);
-            Version formatted = parseSemVer(joiner.toString());
-            return new Version(version, formatted.versionData());
+
+        String major = matcher.group(1);
+        String minor = matcher.group(2);
+        String patch = matcher.group(3);
+
+        if (patch == null) {
+            patch = "0";
         }
-        return parseSemVer(version);
+
+        return parseSemVer(major + "." + minor + "." + patch);
     }
 
     public static @NotNull Version parseSemVer(@NotNull final String version) throws IllegalArgumentException {

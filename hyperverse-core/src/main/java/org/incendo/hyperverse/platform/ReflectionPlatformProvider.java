@@ -32,13 +32,25 @@ public final class ReflectionPlatformProvider implements PlatformProvider {
 
     @Override
     public @NotNull Class<? extends NMS> providePlatform() throws PlatformProvisionException {
-        String expectedPackage = this.minecraftVersion.original().toLowerCase(Locale.ENGLISH).replace('.', '_');
+        var data = this.minecraftVersion.versionData();
+
+        String expectedPackage;
+        if (data.patch() == 0) {
+            expectedPackage = data.major() + "_" + data.minor();
+        } else {
+            expectedPackage = data.major() + "_" + data.minor() + "_" + data.patch();
+        }
+
         String packageName = "org.incendo.hyperverse.platform.v" + expectedPackage;
+
         try {
             Class<?> clazz = Class.forName(packageName + ".NMSImpl");
             return clazz.asSubclass(NMS.class);
         } catch (ReflectiveOperationException ex) {
-            throw new PlatformProvisionException("Could not provide platform for version: " + this.minecraftVersion + "!", ex);
+            throw new PlatformProvisionException(
+                    "Could not provide platform for version: " + this.minecraftVersion + "!",
+                    ex
+            );
         }
     }
 

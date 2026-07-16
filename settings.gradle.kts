@@ -3,6 +3,7 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 pluginManagement {
     repositories {
         gradlePluginPortal()
+        maven("https://repo.papermc.io/repository/maven-public/")
     }
     includeBuild("gradle/build-logic")
 }
@@ -13,13 +14,5 @@ include(":hyperverse-nms-common")
 include(":hyperverse-core")
 
 include(":hyperverse-nms-unsupported")
-include(":hyperverse-nms-1-20-6")
-include(":hyperverse-nms-1-21")
-include(":hyperverse-nms-1-21-3")
-include(":hyperverse-nms-1-21-4")
-include(":hyperverse-nms-1-21-5")
-include(":hyperverse-nms-1-21-6")
-include(":hyperverse-nms-1-21-7")
-include(":hyperverse-nms-1-21-8")
-include(":hyperverse-nms-1-21-10")
-include(":hyperverse-nms-1-21-11")
+include(":hyperverse-nms-26-1")
+include(":hyperverse-nms-26-2")
