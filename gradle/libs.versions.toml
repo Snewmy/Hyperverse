@@ -4,8 +4,8 @@ ktlint = "0.50.0"
 checkstyle = "10.12.5"
 kotlin = "1.9.20"
 shadow = "9.4.1"
-paperweight = "2.0.0-beta.21"
-run-paper = "3.0.2"
+paperweight = "2.0.0-beta.24"
+run-paper = "3.1.0"
 pluginyml = "0.6.0"
 
 # Platforms
